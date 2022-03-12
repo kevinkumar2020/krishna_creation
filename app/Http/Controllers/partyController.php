@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\DB;
 
 class partyController extends Controller
 {
-        public function partyCreateView()
-        {
-            return view('/party/party-create');
-        }
+    public function partyCreateView()
+    {
+        return view('/party/party-create');
+    }
 
     public function partyCreate(Request $r)
     {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2022 at 08:20 PM
+-- Generation Time: Mar 12, 2022 at 05:41 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -58,6 +58,30 @@ CREATE TABLE `categories_jobwork` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_challan`
+--
+
+CREATE TABLE `tbl_challan` (
+  `challan_id` int(11) NOT NULL,
+  `party_id` int(11) NOT NULL,
+  `challan_name` varchar(50) NOT NULL,
+  `challan_date` varchar(50) NOT NULL,
+  `challan_image` text DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_challan`
+--
+
+INSERT INTO `tbl_challan` (`challan_id`, `party_id`, `challan_name`, `challan_date`, `challan_image`, `status`, `created_at`, `updated_at`) VALUES
+(1, 3, 'testing', '12-03-2022', '622cc80802fd5Capture.PNG', 1, '2022-03-12 16:19:20', '2022-03-12 16:19:20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_party`
 --
 
@@ -76,8 +100,7 @@ CREATE TABLE `tbl_party` (
 --
 
 INSERT INTO `tbl_party` (`party_id`, `party_name`, `party_address`, `party_gst`, `status`, `created_at`, `update_at`) VALUES
-(1, 'testing', 'address123', 'nifbf6567bhjbhb', 1, '2022-03-10 19:09:15', '2022-03-10 19:09:15'),
-(2, 'dsfsdsdf', 'sdsff 7786786', 'sfdsfdsfsd989', 0, '2022-03-10 19:13:34', '2022-03-10 19:13:34');
+(3, 'kevin', 'testing', 'testing66766', 1, '2022-03-12 15:54:23', '2022-03-12 15:54:23');
 
 -- --------------------------------------------------------
 
@@ -150,6 +173,12 @@ ALTER TABLE `categories_jobwork`
   ADD PRIMARY KEY (`jobwork_id`);
 
 --
+-- Indexes for table `tbl_challan`
+--
+ALTER TABLE `tbl_challan`
+  ADD PRIMARY KEY (`challan_id`);
+
+--
 -- Indexes for table `tbl_party`
 --
 ALTER TABLE `tbl_party`
@@ -184,10 +213,16 @@ ALTER TABLE `categories_jobwork`
   MODIFY `jobwork_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tbl_challan`
+--
+ALTER TABLE `tbl_challan`
+  MODIFY `challan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `tbl_party`
 --
 ALTER TABLE `tbl_party`
-  MODIFY `party_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `party_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `tbl_registration`

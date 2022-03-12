@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\userController;
 use App\Http\Controllers\masterControlle;
 use App\Http\Controllers\partyController;
+use App\Http\Controllers\challanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,11 @@ Route::post('/party-create',[partyController::class,'partyCreate']);
 Route::get('/party-update-view/{id}',[partyController::class,'partyUpdateView']);
 Route::post('/party-update',[partyController::class,'partyUpdate']);
 Route::get('/party-delete/{id}',[partyController::class,'partyDelete']);
+
+// Challan
+Route::get('/challan-display',[challanController::class,'challanDisplay']);
+Route::get('/challan-create-view',[challanController::class,'challanCreateView']);
+Route::post('/challan-create',[challanController::class,'challanCreate']);
+Route::get('/challan-update-view/{id}',[challanController::class,'challanUpdateView']);
+Route::post('/challan-update',[challanController::class,'challanUpdate']);
+Route::get('/challan-delete/{id}',[challanController::class,'challanDelete']);

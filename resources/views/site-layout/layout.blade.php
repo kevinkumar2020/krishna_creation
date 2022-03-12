@@ -164,6 +164,9 @@
 							<li> 
 								<a href="/party-display"><i class="fe fe-users"></i> <span>Party</span></a>
 							</li>
+							<li> 
+								<a href="/challan-display"><i class="fe fe-document"></i> <span>Challan</span></a>
+							</li>
 							<li class="submenu">
 								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
