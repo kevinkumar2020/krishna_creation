@@ -59,18 +59,18 @@
                                 <select class="form-control" name="role" required>
                                     <option value="" checked>Select User Role</option>
                                     @foreach($roles as $item)
-                                        <option value="{{$item->role_id}}">{{$item->role}}</option>
+                                        <option value="{{$item->role}}">{{$item->role}}</option>
                                     @endforeach
                                 </select>
                             </div>  
                         </div>
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group"> 
                                 <label>Hand Work Categorie</label>
                                 <select class="form-control" name="hwc">
                                     <option value="" checked>Hand Work Categorie</option>
                                     @foreach ($hwc as $item)
-                                        <option value="{{$item->handwork_id}}">{{$item->handwork_type}}</option>
+                                        <option value="{{$item->handwork_type}}">{{$item->handwork_type}}</option>
                                     @endforeach
                                 </select>
                             </div>  

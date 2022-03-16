@@ -54,18 +54,18 @@
                             <div class="form-group">
                                 <label>Hand Work Categorie</label>
                                 <select class="form-control" name="hwc" required>
-                                    <option value="{{$update->handwork_id}}">{{$update->handwork_type}}</option>
+                                    <option value="{{$update->handwork_id}}">{{$update->handwork_id}}</option>
                                     @foreach ($hwc as $item)
-                                        <option value="{{$item->handwork_id}}">{{$item->handwork_type}}</option>
+                                        <option value="{{$item->handwork_type}}">{{$item->handwork_type}}</option>
                                     @endforeach
                                 </select>
                             </div> 
                             <div class="form-group">
                                 <label>Role</label>
                                 <select class="form-control" name="role" required>
-                                    <option value="{{$update->role_id}}">{{$update->role}}</option>
+                                    <option value="{{$update->role_id}}">{{$update->role_id}}</option>
                                     @foreach($roles as $item)
-                                        <option value="{{$item->role_id}}">{{$item->role}}</option>
+                                        <option value="{{$item->role}}">{{$item->role}}</option>
                                     @endforeach
                                 </select>
                             </div>

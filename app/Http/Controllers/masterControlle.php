@@ -11,7 +11,6 @@ class masterControlle extends Controller
     {
         $user_id = session()->get('user_id');
         $userData = DB::table('tbl_registration')->where('user_id',$user_id)
-                    ->join('tbl_role','tbl_registration.role_id','=','tbl_role.role_id')
                     ->first();
         if($userData){
             return view('master/master_dashboard',compact('userData')); 
@@ -38,17 +37,12 @@ class masterControlle extends Controller
             if($checkPhoneNumber){
             return back()->with('error','This phone number already register');
             } else{
-                if($r->hwc==""){
-                    $hwc = 6;
-                }else{
-                    $hwc = $r->hwc;
-                }
                 $createUser = DB::table('tbl_registration')->insert([
                     'name'=>$r->username,
                     'role_id'=>$r->role,
                     'phone'=>$r->phone,
                     'password'=>md5($r->password),
-                    'handwork_id'=>$hwc
+                    'handwork_id'=>$r->hwc
                 ]);
         
                 if($createUser){
@@ -65,10 +59,8 @@ class masterControlle extends Controller
     public function userDisplay()
     {
         $userCount = DB::table('tbl_registration')->where('status',1)->count();
-        $userList = DB::table('tbl_registration')->where('status','1')
-                        ->join('tbl_role','tbl_registration.role_id','=','tbl_role.role_id')
-                        ->join('categories_handwork','tbl_registration.handwork_id','=','categories_handwork.handwork_id')
-                        ->where('tbl_role.role','!=','Admin')
+        $userList = DB::table('tbl_registration')->where('status',1)
+                        ->where('role_id','!=','Admin')
                         ->get();
         if($userList){
             return view('master/userdisplay',compact('userList','userCount')); 
@@ -88,9 +80,7 @@ class masterControlle extends Controller
 
     public function updateUserView($id)
     {
-        $update = DB::table('tbl_registration')->where('user_id',$id)->join('tbl_role','tbl_registration.role_id','=','tbl_role.role_id')
-        ->join('categories_handwork','tbl_registration.handwork_id','=','categories_handwork.handwork_id')
-        ->first();
+        $update = DB::table('tbl_registration')->where('user_id',$id)->first();
         $hwc = DB::table('categories_handwork')->where('handwork_type','!=',"")->get();
         $roles = DB::table('tbl_role')->where('role','!=','Admin')->get();
         if($update && $hwc && $roles){

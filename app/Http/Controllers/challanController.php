@@ -69,9 +69,12 @@ class challanController extends Controller
 
     public function challanUpdateView($id)
     {
-        $data = DB::table('tbl_party')->where('party_id',$id)->first();
-        if($data){
-            return view('party/party-update',compact('data')); 
+        $partyData = DB::table('tbl_party')->where('status',1)->get();
+        $challanData = DB::table('tbl_challan')->where('challan_id',$id)
+                                            ->join('tbl_party','tbl_challan.party_id','=','tbl_party.party_id')
+                                            ->first();
+        if($challanData){
+            return view('challan/challan-update',compact('challanData','partyData')); 
         }else{
             return back()->with('error','Somthing Want To Wrong');
         }
@@ -88,30 +91,29 @@ class challanController extends Controller
             $dest=public_path('/ChallanImage/');
             $file->move($dest, $image);
 
-            $insert = DB::table('tbl_challan')->insert([
+            $update = DB::table('tbl_challan')->where('challan_id',$r->cid)->update([
                 'party_id'=>$r->pid,
                 'challan_name'=>$r->cname,
                 'challan_date'=>$r->cdate,
                 'challan_image'=>$image
             ]);
-            if($insert){
-                return redirect('/challan-create-view')->with('msg','Challan create succussfuly');
+            if($update){
+                return redirect('/challan-display')->with('msg','Challan update succussfuly');
             }else{
                 return back()->with('error','Challan not create.');
             }
-
         }else{
-            return back()->with('error','Somthing want to worng');
+            $update = DB::table('tbl_challan')->where('challan_id',$r->cid)->update([
+                'party_id'=>$r->pid,
+                'challan_name'=>$r->cname,
+                'challan_date'=>$r->cdate
+            ]);
+            if($update){
+                return redirect('/challan-display')->with('msg','Challan update succussfuly');
+            }else{
+                return back()->with('error','Challan not create.');
+            }
         }
-                $update = DB::table('tbl_challan')->where('challan_id',$r->challan_id)->update([
-                    'party_name'=>$r->name,
-                    'party_address'=>$r->address,
-                    'party_gst'=>$r->gst
-                ]);
-                if($update){
-                    return redirect('/challan-display')->with('msg','Update Challan Succuessfully'); 
-                }else{
-                    return back()->with('error','Somthing Want To Wrong');
-                }
+                
     }
 }

@@ -5,6 +5,8 @@ use App\Http\Controllers\userController;
 use App\Http\Controllers\masterControlle;
 use App\Http\Controllers\partyController;
 use App\Http\Controllers\challanController;
+use App\Http\Controllers\jobcardController;
+use App\Http\Controllers\inhouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,3 +57,23 @@ Route::post('/challan-create',[challanController::class,'challanCreate']);
 Route::get('/challan-update-view/{id}',[challanController::class,'challanUpdateView']);
 Route::post('/challan-update',[challanController::class,'challanUpdate']);
 Route::get('/challan-delete/{id}',[challanController::class,'challanDelete']);
+
+// Jobcard
+Route::get('/jobcard-display',[jobcardController::class,'jobcardDisplay']);
+Route::get('/jobcard-create-view',[jobcardController::class,'jobcardCreateView']);
+Route::post('/jobcard-create',[jobcardController::class,'jobcardCreate']);
+Route::get('/jobcard-update-view/{id}',[jobcardController::class,'jobcardUpdateView']);
+Route::post('/jobcard-update',[jobcardController::class,'jobcardUpdate']);
+Route::get('/jobcard-delete/{id}',[jobcardController::class,'jobcardDelete']);
+Route::get('/jobcard-preview/{id}',[jobcardController::class,'jobcardPreview']);
+
+// InHouse
+Route::get('/inhouse-display',[inhouseController::class,'inhouseDisplay']);
+Route::get('/inhouse-insert-view/{id}',[inhouseController::class,'inhouseInsertView']);
+Route::get('/inhouse-update-view/{id}',[inhouseController::class,'inhouseUpdateView']);
+
+Route::post('/inhouse-create',[inhouseController::class,'inhouseCreate']);
+Route::get('/inhouse-update-view/{id}',[inhouseController::class,'inhouseUpdateView']);
+Route::post('/inhouse-update',[inhouseController::class,'inhouseUpdate']);
+Route::get('/inhouse-delete/{id}',[inhouseController::class,'inhouseDelete']);
+Route::get('/inhouse-preview/{id}',[inhouseController::class,'inhousePreview']);

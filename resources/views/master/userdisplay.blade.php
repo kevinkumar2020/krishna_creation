@@ -60,8 +60,8 @@
 															<tr>
                                                             <td>{{$item->user_id}}</td>
                                                                     <td>{{$item->name}}</td>
-                                                                    <td>{{$item->role}}</td>
-                                                                    <td>{{$item->handwork_type}}</td>
+                                                                    <td>{{$item->role_id}}</td>
+                                                                    <td>{{$item->handwork_id}}</td>
 																	<td><a class="fa fa-edit btn btn-outline-success"  href="/update-user-view/{{$item->user_id}}" roal="button"></a>&nbsp;&nbsp;&nbsp;<a class="fa fa-trash btn btn-outline-danger confirm"  href="/userdelete/{{$item->user_id}}" roal="button"></a></td>																	
 																	</tr>
 																@endforeach

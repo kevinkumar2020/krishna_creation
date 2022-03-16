@@ -135,7 +135,7 @@
 								<span>Main</span>
 							</li>
 							<li> 
-								<a href="index.html"><i class="fe fe-home"></i> <span>Dashboard</span></a>
+								<a href="/master_dashboard"><i class="fe fe-home"></i> <span>Dashboard</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="fe fe-cart"></i> <span> Ecommerce</span> <span class="menu-arrow"></span></a>
@@ -166,6 +166,24 @@
 							</li>
 							<li> 
 								<a href="/challan-display"><i class="fe fe-document"></i> <span>Challan</span></a>
+							</li>
+							<li> 
+								<a href="/jobcard-display"><i class="fe fe-document"></i> <span>Jobcard</span></a>
+							</li>
+							<li> 
+								<a href="/inhouse-display"><i class="fe fe"></i> <span>In House</span></a>
+							</li>
+							<li> 
+								<a href="/outhouse-display"><i class="fe fe-"></i> <span>Out House</span></a>
+							</li>
+							<li> 
+								<a href="/threadcutter-display"><i class="fe fe-"></i> <span>Thread-Cutter</span></a>
+							</li>
+							<li> 
+								<a href="/sticher-display"><i class="fe fe-"></i> <span>Sticher</span></a>
+							</li>
+							<li> 
+								<a href="/handwork-display"><i class="fe fe-"></i> <span>Hand_Work</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>

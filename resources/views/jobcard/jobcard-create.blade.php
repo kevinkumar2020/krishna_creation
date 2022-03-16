@@ -11,7 +11,7 @@
 		<div class="col">
 			<ul class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/master_dashboard">Dashboard</a></li>
-				<li class="breadcrumb-item active">Edit Challan</li> 
+				<li class="breadcrumb-item active">Add JobCard</li> 
 			</ul>
 		</div>
 	</div>
@@ -20,6 +20,14 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="card">
+            @if(session()->has('msg'))
+            <div class="alert alert-success ">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{session()->get('msg')}}
+            </div>
+            @endif
 			@if(session()->has('error'))
 			<div class="alert alert-warning ">
 				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -30,19 +38,19 @@
 			@endif
 			<div class="card-header">
 
-				<h4 class="card-title">Edit Existing Challan
-					<a class="fa fa-list float-right mt-1" href="/challan-display" roal="button"></a>
-					{{-- <a class="btn btn btn-outline-info float-right mr-4" href="/party-create-view">
-						<i class="fa fa-plus"></i> ADD New Party</a>
-					&nbsp; --}}
+				<h4 class="card-title">Create New Jobcard
+					<a class="fa fa-list float-right mt-1" href="/jobcard-display" roal="button"></a>
+					<a class="btn btn btn-outline-info float-right mr-4" href="/jobcard-create-view">
+						<i class="fa fa-plus"></i> ADD New Challan</a>
+					&nbsp;
 				</h4>
 
 			</div>
 			<div class="card-body">
-				<form action="/challan-update" method="POST" enctype="multipart/form-data">
+				<form action="/jobcard-create" method="POST" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
-						<div class="col-xl-6"> 
+						<div class="col-xl-6">
 
 							{{-- <div class="form-group row">
 								<label class="col-sm-3 col-form-label">C</label>
@@ -53,16 +61,14 @@
 									
 								</div>
 							</div> --}}
-                            <input type="hidden" readonly value="{{$challanData->challan_id}}" name="cid" id="cid"
-										class="form-control border-primary">
-                            <input type="hidden" readonly value="{{$challanData->party_id}}" name="pid" id="pid"
+                            <input type="hidden" readonly value="{{old('cid')}}" name="cid" id="cid"
 										class="form-control border-primary">
 							<div class="form-group row">
 
-								<label class="col-sm-3 col-form-label">Party Name<span style="color:red" >*</span> </label>
+								<label class="col-sm-3 col-form-label">Challan Name<span style="color:red" >*</span> </label>
 								<div class="col-sm-9 input-group">
 									<div class="input-group mb-3">
-										<input type="text" value="{{$challanData->party_name}}" name="pname" id="pname"
+										<input type="text" value="{{old('cname')}}" name="cname" id="cname"
 											class="form-control border-primary " readonly required>
 										<div class="input-group-append">
 											<button class="fa fa-user" style="height:40px;" type="button"
@@ -75,41 +81,61 @@
 							</div>
 
 							<div class="form-group row">
-								<label class="col-lg-3 col-form-label">Address</label>
+								<label class="col-lg-3 col-form-label">Date</label>
 								<div class="col-lg-9">
-									<input type="text" value="{{$challanData->party_address}}" name="paddress" id="paddress" readonly required
+									<input type="text" value="{{old('cdate')}}" name="cdate" id="cdate" readonly required
+										class="form-control border-primary">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label">Jobcard Number<span style="color:red" >*</span></label>
+								<div class="col-lg-9">
+									<input type="number" value="{{old('jnumber')}}" name="jnumber" id="jnumber" required
+										class="form-control border-primary">
+								</div>
+							</div>
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label">Job-Work</label>
+								<div class="col-lg-9"> 
+									@foreach($jwData as $item)
+										<input type="checkbox" value="{{$item->jobwork_type}}" name="jw[]" />{{$item->jobwork_type}} <br/>
+									@endforeach
+								</div>
+							</div>
+
+						</div>
+						<div class="col-xl-6"> 
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label">Production Type<span style="color:red" >*</span></label>
+								<div class="col-lg-9">
+									<select name="ptype" id="ptype" c required>
+										<option value="In-House">In-House</option>
+										<option value="Out-House">Out-House</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label">Pieces<span style="color:red" >*</span></label>
+								<div class="col-lg-9">
+									<input type="number" name="pieces" id="pieces"  required
+										class="form-control border-primary">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label">Design Number<span style="color:red" >*</span></label>
+								<div class="col-lg-9">
+									<input type="number" value="{{old('dnumber')}}" name="dnumber" id="dnumber" required
 										class="form-control border-primary">
 								</div>
 							</div>
 
 							<div class="form-group row ">
-								<label class="col-lg-3 col-form-label">Challan Image</label>
+								<label class="col-lg-3 col-form-label">Design Image</label>
 								<div class="col-lg-9">
-									<input type="file" value="{{old('cimage')}}" name="cimage" id="cimage" class="form-control border-primary">
-								</div>
-							</div>
-                            <div class="form-group row ">
-								<label class="col-lg-3 col-form-label">Challan Image</label>
-								<div class="col-lg-9">
-									<img src="../ChallanImage/{{$challanData->challan_image}}" height="100" class="border-primary">
-								</div>
-							</div>
-
-						</div>
-						<div class="col-xl-6">
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label">Challan Name<span style="color:red" >*</span></label>
-								<div class="col-lg-9">
-									<input type="text" value="{{$challanData->challan_name}}" name="cname" id="cname" class="form-control border-primary" required>
-								</div>
-							</div>
-
-							<div class="form-group row">
-								<label class="col-lg-3 col-form-label">Date<span style="color:red" >*</span></label>
-								<div class="col-lg-9">
-									<input type="text" name="cdate" id="cdate" value="{{$challanData->challan_date}}" required
-										class="form-control border-primary">
-									@error('podate')<p style="color:red">{{$message}}</p>@enderror
+									<input type="file" value="{{old('dimage')}}" name="dimage[]" id="dimage" class="form-control border-primary" multiple>
 								</div>
 							</div>
 
@@ -136,7 +162,7 @@
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Party List</h5>
+				<h5 class="modal-title" id="exampleModalLabel">Challan List</h5>
 				{{-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button> --}}
@@ -152,18 +178,18 @@
 					<thead>
 						<tr id="trow">
 							<th>Id</th>
-							<th>Party Name</th>
-							<th>Party Address</th>
+							<th>Challan Name</th>
+							<th>Challan Date</th>
 
 						</tr>
 					</thead>
 					<tbody id="myTable">
-						@foreach($partyData as $item)
+						@foreach($challanData as $item)
 						<tr>
 
-							<td>{{$item->party_id}}</td>
-							<td>{{$item->party_name}}</td>
-							<td>{{$item->party_address }}</td>
+							<td>{{$item->challan_id}}</td>
+							<td>{{$item->challan_name}}</td>
+							<td>{{$item->challan_date}}</td>
 
 						</tr>
 						@endforeach
@@ -206,9 +232,9 @@
 		}
 		// alert(data);
 
-		document.getElementById("pid").value = data[0];
-		document.getElementById("pname").value = data[1];
-		document.getElementById("paddress").value = data[2];
+		document.getElementById("cid").value = data[0];
+		document.getElementById("cname").value = data[1];
+		document.getElementById("cdate").value = data[2];
 		$('#exampleModal').modal('hide');
 
 
