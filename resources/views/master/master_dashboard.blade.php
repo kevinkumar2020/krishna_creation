@@ -4,7 +4,7 @@
 @section('extra-css')
 @endsection
 
-@section('content')
+@section('content') 
                     		<!-- Page Header -->
 					<div class="page-header">
 						<div class="row">
