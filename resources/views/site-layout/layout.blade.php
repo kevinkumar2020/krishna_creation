@@ -180,7 +180,7 @@
 								<a href="/threadcutting-display"><i class="fe fe-"></i> <span>Thread-Cutting</span></a>
 							</li>
 							<li> 
-								<a href="/sticher-display"><i class="fe fe-"></i> <span>Sticher</span></a>
+								<a href="/stitching-display"><i class="fe fe-"></i> <span>Sticher</span></a>
 							</li>
 							<li> 
 								<a href="/handwork-display"><i class="fe fe-"></i> <span>Hand_Work</span></a>

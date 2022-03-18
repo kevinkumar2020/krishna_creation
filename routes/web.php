@@ -10,6 +10,7 @@ use App\Http\Controllers\inhouseController;
 use App\Http\Controllers\outhouseController;
 use App\Http\Controllers\threadcuttingController;
 use App\Http\Controllers\stitchingController;
+use App\Http\Controllers\handworkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,4 +95,22 @@ Route::get('/threadcutting-update-view/{id}',[threadcuttingController::class,'th
 Route::post('/threadcutting-update',[threadcuttingController::class,'threadcuttingUpdate']);
 Route::get('/threadcutting-done-view/{id}',[threadcuttingController::class,'threadcuttingDoneView']);
 Route::post('/threadcutting-done',[threadcuttingController::class,'threadcuttingDone']);
+ 
+// Stitching
+Route::get('/stitching-display',[stitchingController::class,'stitchingDisplay']);
+Route::get('/stitching-insert-view/{id}',[stitchingController::class,'stitchingInsertView']);
+Route::post('/stitching-insert',[stitchingController::class,'stitchingInsert']);
+Route::get('/stitching-update-view/{id}',[stitchingController::class,'stitchingUpdateView']);
+Route::post('/stitching-update',[stitchingController::class,'stitchingUpdate']);
+Route::get('/stitching-done-view/{id}',[stitchingController::class,'stitchingDoneView']);
+Route::post('/stitching-done',[stitchingController::class,'stitchingDone']);
+
+// HandWork
+Route::get('/handwork-display',[handworkController::class,'handworkDisplay']);
+Route::get('/handwork-insert-view/{id}',[handworkController::class,'handworkInsertView']);
+Route::post('/handwork-insert',[handworkController::class,'handworkInsert']);
+Route::get('/handwork-update-view/{id}',[handworkController::class,'handworkUpdateView']);
+Route::post('/handwork-update',[handworkController::class,'handworkUpdate']);
+Route::get('/handwork-done-view/{id}',[handworkController::class,'handworkDoneView']);
+Route::post('/handwork-done',[handworkController::class,'handworkDone']);
 

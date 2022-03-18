@@ -7,110 +7,110 @@ use Illuminate\Support\Facades\DB;
 
 class stitchingController extends Controller
 {
-    public function threadcuttingDisplay()
+    public function stitchingDisplay()
     {
-        $dataCount = DB::table('tbl_jobcard')->where('status',1)->where('inhouse_status',1)->count();
-        $data = DB::table('tbl_jobcard')->where('status',1)->where('inhouse_status',1)->get();
+        $dataCount = DB::table('tbl_jobcard')->where('status',1)->where('outhouse_status',1)->orwhere('threadcutting_status',1)->count();
+        $data = DB::table('tbl_jobcard')->where('status',1)->where('outhouse_status',1)->orwhere('threadcutting_status',1)->get();
         if($data){
-            return view('threadcutting/threadcutting-display',compact('data','dataCount')); 
+            return view('stitching/stitching-display',compact('data','dataCount')); 
         }
     }
 
-    public function threadcuttingInsertView($id)
+    public function stitchingInsertView($id)
     {
-        $check = DB::table('tbl_threadcutting')->where('jobcard_id',$id)->count();
+        $check = DB::table('tbl_stitching')->where('jobcard_id',$id)->count();
         if($check > 0){
             return back()->with('error','Job is already seleted');
         }else{
-            return view('/threadcutting/threadcutting-create',compact('id'));
+            return view('/stitching/stitching-create',compact('id'));
         }
     }
 
-    public function threadcuttingInsert(Request $r)
+    public function stitchingInsert(Request $r)
     {
-        $insert = DB::table('tbl_threadcutting')->insert([
+        $insert = DB::table('tbl_stitching')->insert([
             'jobcard_id'=>$r->jid,
             'estimated_time'=>$r->edate
         ]);
         if($insert){
-            $update = DB::table('tbl_jobcard')->where('jobcard_id',$r->jid)->update(['threadcutting_status'=>2]);
+            $update = DB::table('tbl_jobcard')->where('jobcard_id',$r->jid)->update(['stitching_status'=>2]);
             if($update){
-                return redirect('/threadcutting-display')->with('msg','Job Started..');
+                return redirect('/stitching-display')->with('msg','Job Started..');
             }
         }else{
             return back()->with('error','Somthing want to wrong');
         }
     }
 
-    public function threadcuttingUpdateView($id) 
+    public function stitchingUpdateView($id) 
     {
-        $data = DB::table('tbl_threadcutting')->where('jobcard_id',$id)->first();
+        $data = DB::table('tbl_stitching')->where('jobcard_id',$id)->first();
         if($data){
-            return view('threadcutting/threadcutting-update',compact('data')); 
+            return view('stitching/stitching-update',compact('data')); 
         }else{
             return back()->with('error','Somthing Want To Wrong');
         }
     }
 
-    public function threadcuttingUpdate(Request $r)
+    public function stitchingUpdate(Request $r)
     {
         $image = "";
-        if($r->hasFile('timage')){
-            $file=$r->file('timage');
+        if($r->hasFile('simage')){
+            $file=$r->file('simage');
             $fname=$file->getClientOriginalName();
             $ext=$file->getClientOriginalExtension();
             $image=$fname;
-            $dest=public_path('/ThreadCutting/');
+            $dest=public_path('/Stitching/');
             $file->move($dest, $image);
 
-            $update = DB::table('tbl_threadcutting')->where('jobcard_id',$r->jid)->update([
+            $update = DB::table('tbl_stitching')->where('jobcard_id',$r->jid)->update([
                 'estimated_time'=>$r->edate,
-                'threadcutting_image'=>$image
+                'stitching_image'=>$image
             ]);
             if($update){
-                 return redirect('/threadcutting-display')->with('msg','ThreadCutting Image Upload');  
+                 return redirect('/stitching-display')->with('msg','Stitching Image Upload');  
             }else{
                 return back()->with('error','Somthing want to wrong');
             }
         }else{
-            $update = DB::table('tbl_threadcutting')->where('jobcard_id',$r->jid)->update([
+            $update = DB::table('tbl_stitching')->where('jobcard_id',$r->jid)->update([
                 'estimated_time'=>$r->edate
             ]);
             if($update){
-                 return redirect('/threadcutting-display')->with('msg','ThreadCutting Image Upload');  
+                 return redirect('/stitching-display')->with('msg','Stitching Image Upload');  
             }else{
                 return back()->with('error','Somthing want to wrong');
             }
         }
     }
 
-    public function threadcuttingDoneView($id)
+    public function stitchingDoneView($id)
     {
         if($id){
-            return view('/threadcutting/threadcutting-done',compact('id'));
+            return view('/stitching/stitching-done',compact('id'));
         }else{
             return back()->with('error','Somthing want to wrong');
         }
     }
 
-    public function threadcuttingDone(Request $r)
+    public function stitchingDone(Request $r)
     {
         $image = "";
-        if($r->hasFile('timage')){
-            $file=$r->file('timage');
+        if($r->hasFile('simage')){
+            $file=$r->file('simage');
             $fname=$file->getClientOriginalName();
             $ext=$file->getClientOriginalExtension();
             $image=$fname;
-            $dest=public_path('/ThreadCutting/');
+            $dest=public_path('/Stitching/');
             $file->move($dest, $image);
 
-            $update = DB::table('tbl_threadcutting')->where('jobcard_id',$r->jid)->update([
-                'threadcutting_image'=>$image
+            $update = DB::table('tbl_stitching')->where('jobcard_id',$r->jid)->update([
+                'stitching_image'=>$image
             ]);
             if($update){
-                $statusUpdate = DB::table('tbl_jobcard')->where('jobcard_id',$r->jid)->update(['threadcutting_status'=>1]);
+                $statusUpdate = DB::table('tbl_jobcard')->where('jobcard_id',$r->jid)->update(['stitching_status'=>1]);
                 if($statusUpdate){
-                 return redirect('/threadcutting-display')->with('msg','ThreadCutting Image Upload');
+                 return redirect('/stitching-display')->with('msg','Stitching Image Upload');
                 }else{
                     return back()->with('error','Somthing want to wrong');
                 }   
@@ -120,5 +120,5 @@ class stitchingController extends Controller
         }else{
             return back()->with('error','File not selected');
         }
-    }
+    } 
 }

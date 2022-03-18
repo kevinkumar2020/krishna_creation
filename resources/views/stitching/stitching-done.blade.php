@@ -11,7 +11,7 @@
 		<div class="col">
 			<ul class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/master_dashboard">Dashboard</a></li>
-				<li class="breadcrumb-item active">Done ThreadCutting</li> 
+				<li class="breadcrumb-item active">Done Stitching</li> 
 			</ul>
 		</div>
 	</div>
@@ -30,13 +30,13 @@
 			@endif
 			<div class="card-header">
 
-				<h4 class="card-title">Done ThreadCutting
-					<a class="fa fa-list float-right mt-1" href="/threadcutting-display" roal="button"></a>
+				<h4 class="card-title">Done Stitching
+					<a class="fa fa-list float-right mt-1" href="/stitching-display" roal="button"></a>
 				</h4>
 
 			</div>
 			<div class="card-body">
-				<form action="/threadcutting-done" method="POST" enctype="multipart/form-data">
+				<form action="/stitching-done" method="POST" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
 						<div class="col-xl-6">
@@ -44,9 +44,9 @@
 										class="form-control border-primary">
  
                                 <div class="form-group row">
-                                    <label class="col-lg-3 col-form-label">ThreadCutting Image</label>
+                                    <label class="col-lg-3 col-form-label">Stitching Image</label>
                                         <div class="col-lg-9">
-                                            <input type="file" value="{{old('timage')}}" name="timage" id="timage" class="form-control border-primary">
+                                            <input type="file" value="{{old('simage')}}" name="simage" id="simage" class="form-control border-primary">
                                         </div>
                                 </div>
 
