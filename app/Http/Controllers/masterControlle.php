@@ -10,13 +10,15 @@ class masterControlle extends Controller
     public function dashboard()
     {
         $user_id = session()->get('user_id');
-        $userData = DB::table('tbl_registration')->where('user_id',$user_id)
-                    ->first();
-        if($userData){
-            return view('master/master_dashboard',compact('userData')); 
+        if($user_id){
+            $totalUser = DB::table('tbl_registration')->where('status',1)->count();
+            $totalParty = DB::table('tbl_party')->where('status',1)->count();
+            $totalJobcard = DB::table('tbl_jobcard')->where('status',1)->count();
+            return view('master/master_dashboard',compact('totalUser','totalParty','totalJobcard')); 
         }else{
             return view('login');
         }
+       
     }
 
         //User Section
@@ -108,10 +110,7 @@ class masterControlle extends Controller
     public function userProfile()
     {
         $user_id = session()->get('user_id');
-        $profileData = DB::table('tbl_registration')->where('user_id',$user_id)
-                        ->join('tbl_role','tbl_registration.role_id','=','tbl_role.role_id')
-                        ->join('categories_handwork','tbl_registration.handwork_id','=','categories_handwork.handwork_id')
-                        ->first();   
+        $profileData = DB::table('tbl_registration')->where('user_id',$user_id)->first();
         if($profileData){
             return view('/master/user-profile',compact('profileData'));
         }

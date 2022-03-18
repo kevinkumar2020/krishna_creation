@@ -110,11 +110,11 @@
 								</div>
 								<div class="user-text">
 									<h6>{{session()->get('name')}}</h6>
-									<p class="text-muted mb-0"></p>
+									<p class="text-muted mb-0">{{session()->get('role')}}</p>
 								</div>
 							</div>
 							<a class="dropdown-item" href="/user-profile">My Profile</a>
-							<a class="dropdown-item" href="profile.html">Account Settings</a>
+							{{-- <a class="dropdown-item" href="profile.html">Account Settings</a> --}}
 							<a class="dropdown-item" href="/logout">Logout</a>
 						</div>
 					</li>
@@ -137,7 +137,7 @@
 							<li> 
 								<a href="/master_dashboard"><i class="fe fe-home"></i> <span>Dashboard</span></a>
 							</li>
-							<li class="submenu">
+							{{-- <li class="submenu">
 								<a href="#"><i class="fe fe-cart"></i> <span> Ecommerce</span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="products.html">Products</a></li>
@@ -154,9 +154,9 @@
 									<li><a href="calendar.html">Calendar</a></li>
 									<li><a class="active" href="inbox.html">Email</a></li>
 								</ul>
-							</li>
+							</li> --}}
 							<li class="menu-title"> 
-								<span>Pages</span>
+								<span>Management</span>
 							</li>
 							<li> 
 								<a href="/userdisplay"><i class="fe fe-user-plus"></i> <span>Manage User</span></a>
@@ -185,7 +185,7 @@
 							<li> 
 								<a href="/handwork-display"><i class="fe fe-"></i> <span>Hand_Work</span></a>
 							</li>
-							<li class="submenu">
+							{{-- <li class="submenu">
 								<a href="#"><i class="fe fe-document"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
 								<ul style="display: none;">
 									<li><a href="login.html"> Login </a></li>
@@ -255,7 +255,7 @@
 										<a href="javascript:void(0);"> <span>Level 1</span></a>
 									</li>
 								</ul>
-							</li>
+							</li> --}}
 						</ul>
 					</div>
                 </div>

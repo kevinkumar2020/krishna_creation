@@ -31,7 +31,7 @@
 									</div>
 									<div class="col ml-md-n2 profile-user-info">
 										<h4 class="user-name mb-0">{{$profileData->name}}</h4>
-										<h6 class="text-muted">{{$profileData->role}}</h6>
+										<h6 class="text-muted">{{$profileData->role_id}}</h6>
 										<!-- <div class="user-Location"><i class="fa fa-map-marker"></i> Florida, United States</div>
 										<div class="about-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div> -->
 									</div>
@@ -53,9 +53,9 @@
 									<li class="nav-item">
 										<a class="nav-link" data-toggle="tab" href="#password_tab">Password</a>
 									</li>
-									<li class="nav-item ml-auto">
+									{{-- <li class="nav-item ml-auto">
 									<a class="btn btn btn-info float-right" href="" class="btn btn-primary" role='button'>Compay Details</a>
-									</li>
+									</li> --}}
 									</ul>
 
 									
@@ -88,12 +88,12 @@
 
 													<div class="row">
 														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Role</p>
-														<p class="col-sm-9">{{$profileData->role}}</p>
+														<p class="col-sm-9">{{$profileData->role_id}}</p>
 													</div>
 													
 													<div class="row">
 														<p class="col-sm-3 text-muted text-sm-right mb-0 mb-sm-3">Hand Work</p>
-														<p class="col-sm-9">{{$profileData->handwork_type}}</p>
+														<p class="col-sm-9">{{$profileData->handwork_id}}</p>
 													</div>
 													
 												</div>

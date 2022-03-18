@@ -60,7 +60,7 @@
 											<th>Action</th>
 											</tr>
 											</thead>
-											<tbody>
+											<tbody> 
 															
 											@foreach($jobcardList as $item)
 											<tr>
@@ -70,9 +70,9 @@
 											<td>{{$item->design_number}}</td>
 											<td>{{$item->production_type}}</td>
 											<td>
-												@if($item->inhouse_status == 0) <span class="badge badge-pill bg-danger inv-badge">Not Running</span> 
-												@elseif($item->inhouse_status == 1) <span class="badge badge-pill bg-success inv-badge">Completed</span>
-												@else <span class="badge badge-pill bg-warning inv-badge">Pending</span>
+												@if($item->inhouse_status == 0 && $item->outhouse_status == 0) <span class="badge badge-pill bg-danger inv-badge">Not Running</span> 
+												@elseif($item->handwork_status == 1) <span class="badge badge-pill bg-success inv-badge">Completed</span>
+												@else <span class="badge badge-pill bg-warning inv-badge">Pending</span> 
 												@endif
 											</td>							
 											<td><a class="fa fa-edit btn btn-outline-success"  href="/jobcard-update-view/{{$item->jobcard_id}}" roal="button"></a>

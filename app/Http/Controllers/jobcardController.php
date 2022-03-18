@@ -79,9 +79,16 @@ class jobcardController extends Controller
                         ->where('tbl_jobcard.status',1)
                         ->join('tbl_challan','tbl_jobcard.challan_id','=','tbl_challan.challan_id')
                         ->first();
-        // $images = explode(',',$data->design_image);
+        $partyData = DB::table('tbl_party')->where('status',1)
+                                            ->where('party_id',$data->party_id)
+                                            ->first();
+        $inhouseData = DB::table('tbl_inhouse')->where('jobcard_id',$id)->first();
+        $outhouseData = DB::table('tbl_outhouse')->where('jobcard_id',$id)->first();
+        $threadcuttingData = DB::table('tbl_threadcutting')->where('jobcard_id',$id)->first();
+        $stitchingData = DB::table('tbl_stitching')->where('jobcard_id',$id)->first();
+        $handworkData = DB::table('tbl_handwork')->where('jobcard_id',$id)->first();
         if($data){
-            return view('jobcard/jobcard-preview',compact('data')); 
+            return view('jobcard/jobcard-preview',compact('data','partyData','inhouseData','outhouseData','threadcuttingData','stitchingData','handworkData')); 
         }
     }
 
