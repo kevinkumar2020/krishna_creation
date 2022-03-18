@@ -11,7 +11,7 @@
 							<div class="col"> 
 								<ul class="breadcrumb">
 									<li class="breadcrumb-item"><a href="/master_dashboard">Dashboard</a></li>
-									<li class="breadcrumb-item active">InHouse List</li>
+									<li class="breadcrumb-item active">OutHouse List</li>
 								</ul>
 							</div>
 						</div>
@@ -38,7 +38,7 @@
 							</div>									
 							@endif
 								<div class="card-header">
-									<h4 class="card-title">Total InHouse<label>({{$inhouseCount}})</label>
+									<h4 class="card-title">Total OutHouse<label>({{$outhouseCount}})</label>
 										<div class="btn-group float-right btn-group-justified">
 										
 										{{-- <a class="btn btn btn-outline-info"  href="/jobcard-create-view"  > <i class="fa fa-plus"></i>New Jobcard</a> --}}
@@ -51,7 +51,7 @@
 								<table id="example" class="display table table-stripedsss" style="width:100%">
 									<thead>
 											<tr>
-											<th>InHouse Id</th>
+											<th>OutHouse Id</th>
 											<th>Jobcard number</th>
 											<th>Design number</th>					
 											<th>Status</th>
@@ -60,19 +60,19 @@
 											</thead>
 											<tbody>
 											<?php $i=1; ?>			
-											@foreach($inhouseList as $item)
+											@foreach($outhouseList as $item)
 											<tr>
 											<td>{{$i++}}</td>
 											<td>{{$item->jobcard_number}}</td>
 											<td>{{$item->design_number}}</td>
 											<td>
-												@if($item->inhouse_status == 0) <span class="badge badge-pill bg-danger inv-badge">Not Running</span>@endif
-												@if($item->inhouse_status == 1) <span class="badge badge-pill bg-success inv-badge">Completed</span>@endif
-												@if($item->inhouse_status == 2) <span class="badge badge-pill bg-warning inv-badge">Pending</span>@endif
+												@if($item->outhouse_status == 0) <span class="badge badge-pill bg-danger inv-badge">Not Running</span>@endif
+												@if($item->outhouse_status == 1) <span class="badge badge-pill bg-success inv-badge">Completed</span>@endif
+												@if($item->outhouse_status == 2) <span class="badge badge-pill bg-warning inv-badge">Pending</span>@endif
 											</td>							
-											<td><a class="fa fa-play btn btn-outline-success"  href="/inhouse-insert-view/{{$item->jobcard_id}}" roal="button"></a>
-											&nbsp;&nbsp;&nbsp;<a class="fa fa-edit btn btn-outline-success"  href="inhouse-update-view/{{$item->jobcard_id}}" roal="button"></a>							
-											&nbsp;&nbsp;&nbsp;<a class="fa fa-check btn btn-outline-success confirm"  href="/inhouse-done/{{$item->jobcard_id}}" roal="button"></a>
+											<td><a class="fa fa-play btn btn-outline-success"  href="/outhouse-insert-view/{{$item->jobcard_id}}" roal="button"></a>
+											&nbsp;&nbsp;&nbsp;<a class="fa fa-edit btn btn-outline-success"  href="outhouse-update-view/{{$item->jobcard_id}}" roal="button"></a>							
+											&nbsp;&nbsp;&nbsp;<a class="fa fa-check btn btn-outline-success confirm"  href="/outhouse-done/{{$item->jobcard_id}}" roal="button"></a>
 										</td>
 										</tr>
 												@endforeach

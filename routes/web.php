@@ -7,6 +7,9 @@ use App\Http\Controllers\partyController;
 use App\Http\Controllers\challanController;
 use App\Http\Controllers\jobcardController;
 use App\Http\Controllers\inhouseController;
+use App\Http\Controllers\outhouseController;
+use App\Http\Controllers\threadcuttingController;
+use App\Http\Controllers\stitchingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,10 +73,25 @@ Route::get('/jobcard-preview/{id}',[jobcardController::class,'jobcardPreview']);
 // InHouse
 Route::get('/inhouse-display',[inhouseController::class,'inhouseDisplay']);
 Route::get('/inhouse-insert-view/{id}',[inhouseController::class,'inhouseInsertView']);
-Route::get('/inhouse-update-view/{id}',[inhouseController::class,'inhouseUpdateView']);
-
-Route::post('/inhouse-create',[inhouseController::class,'inhouseCreate']);
+Route::post('/inhouse-insert',[inhouseController::class,'inhouseInsert']);
 Route::get('/inhouse-update-view/{id}',[inhouseController::class,'inhouseUpdateView']);
 Route::post('/inhouse-update',[inhouseController::class,'inhouseUpdate']);
-Route::get('/inhouse-delete/{id}',[inhouseController::class,'inhouseDelete']);
-Route::get('/inhouse-preview/{id}',[inhouseController::class,'inhousePreview']);
+Route::get('/inhouse-done/{id}',[inhouseController::class,'inhouseDone']);
+
+// OutHouse
+Route::get('/outhouse-display',[outhouseController::class,'outhouseDisplay']);
+Route::get('/outhouse-insert-view/{id}',[outhouseController::class,'outhouseInsertView']);
+Route::post('/outhouse-insert',[outhouseController::class,'outhouseInsert']);
+Route::get('/outhouse-update-view/{id}',[outhouseController::class,'outhouseUpdateView']);
+Route::post('/outhouse-update',[outhouseController::class,'outhouseUpdate']);
+Route::get('/outhouse-done/{id}',[outhouseController::class,'outhouseDone']);
+
+// ThreadCutting
+Route::get('/threadcutting-display',[threadcuttingController::class,'threadcuttingDisplay']);
+Route::get('/threadcutting-insert-view/{id}',[threadcuttingController::class,'threadcuttingInsertView']);
+Route::post('/threadcutting-insert',[threadcuttingController::class,'threadcuttingInsert']);
+Route::get('/threadcutting-update-view/{id}',[threadcuttingController::class,'threadcuttingUpdateView']);
+Route::post('/threadcutting-update',[threadcuttingController::class,'threadcuttingUpdate']);
+Route::get('/threadcutting-done-view/{id}',[threadcuttingController::class,'threadcuttingDoneView']);
+Route::post('/threadcutting-done',[threadcuttingController::class,'threadcuttingDone']);
+

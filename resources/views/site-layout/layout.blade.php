@@ -177,7 +177,7 @@
 								<a href="/outhouse-display"><i class="fe fe-"></i> <span>Out House</span></a>
 							</li>
 							<li> 
-								<a href="/threadcutter-display"><i class="fe fe-"></i> <span>Thread-Cutter</span></a>
+								<a href="/threadcutting-display"><i class="fe fe-"></i> <span>Thread-Cutting</span></a>
 							</li>
 							<li> 
 								<a href="/sticher-display"><i class="fe fe-"></i> <span>Sticher</span></a>

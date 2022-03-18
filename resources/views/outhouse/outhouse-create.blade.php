@@ -11,7 +11,7 @@
 		<div class="col">
 			<ul class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/master_dashboard">Dashboard</a></li>
-				<li class="breadcrumb-item active">Add InHouse</li> 
+				<li class="breadcrumb-item active">Add OutHouse</li> 
 			</ul>
 		</div>
 	</div>
@@ -30,13 +30,13 @@
 			@endif
 			<div class="card-header">
 
-				<h4 class="card-title">Create New InHouse
-					<a class="fa fa-list float-right mt-1" href="/inhouse-display" roal="button"></a>
+				<h4 class="card-title">Create New OutHouse
+					<a class="fa fa-list float-right mt-1" href="/outhouse-display" roal="button"></a>
 				</h4>
 
 			</div>
 			<div class="card-body">
-				<form action="/inhouse-insert" method="POST" enctype="multipart/form-data">
+				<form action="/outhouse-insert" method="POST" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
 						<div class="col-xl-6">

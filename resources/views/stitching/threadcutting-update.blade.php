@@ -11,7 +11,7 @@
 		<div class="col">
 			<ul class="breadcrumb">
 				<li class="breadcrumb-item"><a href="/master_dashboard">Dashboard</a></li>
-				<li class="breadcrumb-item active">Add InHouse</li> 
+				<li class="breadcrumb-item active">Edit ThreadCutting</li> 
 			</ul>
 		</div>
 	</div>
@@ -30,28 +30,40 @@
 			@endif
 			<div class="card-header">
 
-				<h4 class="card-title">Create New InHouse
-					<a class="fa fa-list float-right mt-1" href="/inhouse-display" roal="button"></a>
+				<h4 class="card-title">Edit ThreadCutting
+					<a class="fa fa-list float-right mt-1" href="/threadcutting-display" roal="button"></a>
 				</h4>
 
 			</div>
 			<div class="card-body">
-				<form action="/inhouse-insert" method="POST" enctype="multipart/form-data">
+				<form action="/threadcutting-update" method="POST" enctype="multipart/form-data">
 					@csrf
 					<div class="row">
 						<div class="col-xl-6">
-                            <input type="hidden" readonly value="{{$id}}" name="jid" id="jid"
+                            <input type="hidden" readonly value="{{$data->jobcard_id}}" name="jid" id="jid"
 										class="form-control border-primary">
 
 							<div class="form-group row">
 								<label class="col-lg-3 col-form-label">Estimated Time<span style="color:red" >*</span></label>
 								<div class="col-lg-9">
-									<input type="date" value="{{date('d-m-y')}}" name="edate" id="edate" required
+									<input type="date" value="{{$data->estimated_time}}" name="edate" id="edate" required
 										class="form-control border-primary">
 								</div>
 							</div>
-
 							
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label">ThreadCutting Image</label>
+								<div class="col-lg-9">
+									<input type="file" value="{{old('timage')}}" name="timage" id="timage" class="form-control border-primary">
+								</div>
+							</div>
+
+							<div class="form-group row">
+								<label class="col-lg-3 col-form-label"></label>
+								<div class="col-lg-9">
+									<img src="../ThreadCutting/{{$data->threadcutting_image}}" height="100" />
+								</div>
+							</div>
 						</div>
 					</div>
 			</div>
